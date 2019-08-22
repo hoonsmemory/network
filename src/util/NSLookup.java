@@ -16,8 +16,8 @@ public class NSLookup {
 	           InetAddress[] inetAddresses = InetAddress.getAllByName(domain);
 			
 			for(InetAddress inetAddress : inetAddresses) {
-				System.out.println(inetAddress.getHostName());
-				System.out.println(inetAddress.getHostAddress());
+				System.out.println(inetAddress.getHostName()); //호스트의 도메인명을 문자열로 반환
+				System.out.println(inetAddress.getHostAddress()); //호스트의 IP 주소를 점으로 구분되는 10진수 형태로 반환
 				System.out.println(inetAddress.toString());
 				System.out.println("------------------------------------");
 			}
