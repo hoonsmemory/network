@@ -16,13 +16,13 @@ public class SimpleHttpServer {
 		try {
 			// 1. Create Server Socket
 			serverSocket = new ServerSocket();
-			   
+
 			// 2. Bind
 			String localhost = InetAddress.getLocalHost().getHostAddress();
-			serverSocket.bind( new InetSocketAddress( localhost, PORT ) );
+			serverSocket.bind(new InetSocketAddress(localhost, PORT));
 			consolLog("bind " + localhost + ":" + PORT);
-			
-			//소켓 계속해서 생성
+
+			// 소켓 계속해서 생성
 			while (true) {
 				// 3. Wait for connecting ( accept )
 				Socket socket = serverSocket.accept();
@@ -46,6 +46,6 @@ public class SimpleHttpServer {
 	}
 
 	public static void consolLog(String message) {
-		System.out.println("[HttpServer#" + Thread.currentThread().getId()  + "] " + message);
+		System.out.println("[HttpServer#" + Thread.currentThread().getId() + "] " + message);
 	}
 }
