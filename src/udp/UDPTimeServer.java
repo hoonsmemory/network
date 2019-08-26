@@ -18,25 +18,23 @@ public class UDPTimeServer {
 			//1. socket 생성
 			socket = new DatagramSocket(PORT);
 			
-			//1-1. 현재 서버 시간 생성
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss a");
-			String time =format.format(new Date());
-			
 			while(true) {
 				
 			//2. data 수신
 			DatagramPacket receivePacket = new DatagramPacket(new byte[BUFFER_SIZE], BUFFER_SIZE);
 			socket.receive(receivePacket);
-			
-
-			
+				
 			//3. data 처리(확인)
 			byte[] data = receivePacket.getData();
 			int length = receivePacket.getLength();
 			String message = new String(data,0,length,"UTF-8");
 
 			if("".equals(message)) {
-				System.out.println("[UDP Echo Server] 현재 시간은 " + time);
+				//현재 시간 요청시
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss a");
+				String time =format.format(new Date());
+				message = "[UDP Echo Server] 현재 시간은 " + time;
+				//System.out.println("[UDP Echo Server] 현재 시간은 " + time);
 			}else {
 				System.out.println("[UDP Echo Server] received : " + message);
 			}
