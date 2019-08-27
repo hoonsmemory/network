@@ -42,11 +42,10 @@ public class ChatClient {
 			printWriter.flush();
 			
 			//6. ChatClientThread 시작
-			new ChatClientThread(bufferedReader, socket).start();
+			new ChatClientThread(bufferedReader, socket, nickname).start();
 					
 			//7. 키보드 입력 처리
-			while (true) {				
-				System.out.print(">> ");
+			while (true) {		
 				String input = scanner.nextLine();
 				
 				if ("quit".equals(input)) {

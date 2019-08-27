@@ -8,27 +8,32 @@ import java.net.SocketException;
 
 
 public class ChatClientThread extends Thread {
-	String name   = null;
+	String nickname   = null;
 	Socket socket = null;
 	BufferedReader bufferedReader = null;
 	
-	public ChatClientThread(BufferedReader bufferedReader, Socket socket) {
+	public ChatClientThread(BufferedReader bufferedReader, Socket socket, String nickname) {
 		this.bufferedReader = bufferedReader;
 		this.socket = socket;
+		this.nickname = nickname;
 	}
 	
 	@Override
 	public void run() {
 		try {
 					
-			while(true) {
-				
+			while(true) {		
 				String message = bufferedReader.readLine();
-				if(message == null) {
-					
+	
+				if(message == null) {		
 					break;
 				}
-				System.out.println(message);
+				
+				String[] tokens = message.split(":");
+				if(!nickname.equals(tokens[0])) {
+					System.out.println(message);
+				}
+				
 			}
 		
 		} catch (IOException e) {
