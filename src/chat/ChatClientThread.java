@@ -22,7 +22,12 @@ public class ChatClientThread extends Thread {
 		try {
 					
 			while(true) {
+				
 				String message = bufferedReader.readLine();
+				if(message == null) {
+					
+					break;
+				}
 				System.out.println(message);
 			}
 		

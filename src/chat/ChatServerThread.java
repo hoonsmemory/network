@@ -57,6 +57,7 @@ public class ChatServerThread extends Thread {
 				}
 				else if("quit".equals(tokens[0])){
 					doQuit(printWriter);
+					break;
 				}else {
 					ChatServer.log( "에러 : 알 수 없는 요청(" + tokens[0] + ")" );
 				}
@@ -91,6 +92,9 @@ public class ChatServerThread extends Thread {
 		addWriter(writer);	
 
 		broadcast(data);
+		
+		((PrintWriter) writer).println("join:ok");
+		((PrintWriter) writer).flush();
 
 	}
 	
