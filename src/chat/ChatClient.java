@@ -47,7 +47,7 @@ public class ChatClient {
 			while (true) {				
 				System.out.print(">> ");
 				String input = scanner.nextLine();
-		
+				
 				if ("quit".equals(input)) {
 					//8. quit 프로토콜 처리
 					printWriter.println("quit:");
@@ -55,25 +55,19 @@ public class ChatClient {
 				}else {
 					//9. 메시지 처리		
 					//데이터 쓰기(전송)
+					if("".equals(input))
+						input = " ";
 					printWriter.println("message:"+input);
 					printWriter.flush();
-				
-					
+
 				}			
 
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				if (socket != null && socket.isClosed() == false)
-					socket.close();
-
 				if (scanner != null)
 					scanner.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 		}
 
 	}

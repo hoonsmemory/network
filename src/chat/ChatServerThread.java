@@ -41,13 +41,11 @@ public class ChatServerThread extends Thread {
 				String request = bufferedReader.readLine();
 
 				if (request == null) {
-					ChatServer.log("클라이언트로 부터 연결 끊김");
+					//ChatServer.log("클라이언트로 부터 연결 끊김");
 					doQuit(printWriter);
 					break;
 				}
 				
-				ChatServer.log("received:" + request);
-
 				//4. 프로토콜 분석
 				String[] tokens = request.split(":");
 				
@@ -87,26 +85,25 @@ public class ChatServerThread extends Thread {
 		this.nickname = nickname;
 		
 		String data = nickname + "님이 참여하였습니다.";
+		System.out.println(data);
 		
 		//writer pool에 저장
 		addWriter(writer);	
-	
-		broadcast(data);
-		
-		
 
-		
+		broadcast(data);
 
 	}
 	
 	private void doMessage(String message) {
 		broadcast(nickname + ":" + message);	
+		System.out.println(nickname + ":" + message);
 	}
 	
 	private void doQuit(Writer writer) {
 		removeWriter(writer);
 		
 		String data = nickname + "님이 퇴장하였습니다.";
+		System.out.println(data);
 		broadcast(data);
 	}
 	
