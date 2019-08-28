@@ -37,7 +37,7 @@ public class ChatClientThread extends Thread {
 			}
 		
 		} catch (SocketException e) {
-			ChatServer.log("서버에서 비정상적인 종료를 하였습니다.");
+			ChatServer.log("서버에서 비정상적인 종료를 하여 종료하겠습니다.");
 			System.exit(1);
 
 		} catch (IOException e) {
