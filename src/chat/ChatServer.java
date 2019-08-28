@@ -11,7 +11,8 @@ import java.util.List;
 
 public class ChatServer {
 	private static int PORT = 8000;
-
+	private static String SERVER_IP = "127.0.0.1";
+	
 	public static void main(String[] args) {
 		ServerSocket serverSocket = null;
 		List<Writer> listWriters = new ArrayList<Writer>();
@@ -21,9 +22,9 @@ public class ChatServer {
 			serverSocket = new ServerSocket();
 
 			// 2. 바인딩
-			InetAddress hostAddress = InetAddress.getLocalHost();
-			serverSocket.bind(new InetSocketAddress(hostAddress, PORT));
-			log("binding " + hostAddress.getHostAddress() + ":" + PORT);
+			//InetAddress hostAddress = InetAddress.getLocalHost();
+			serverSocket.bind(new InetSocketAddress(SERVER_IP, PORT));
+			log("binding " + SERVER_IP + ":" + PORT);
 		
 			// 3. 요청 대기
 			while(true) {

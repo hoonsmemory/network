@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class ChatClient {
 
 	//private static String SERVER_IP = "192.168.1.22";
-	private static String SERVER_IP = "192.168.56.1";
+	private static String SERVER_IP = "127.0.0.1";
 	private static int SERVER_PORT = 8000;
 
 	public static void main(String[] args) {
@@ -38,6 +38,9 @@ public class ChatClient {
 			//5. join 프로토콜
 			System.out.print("닉네임 >>");
 			String nickname = scanner.nextLine();
+			if("".equals(nickname))
+				nickname = " ";
+			
 			printWriter.println("join:" + nickname);
 			printWriter.flush();
 			

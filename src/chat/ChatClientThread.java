@@ -28,7 +28,7 @@ public class ChatClientThread extends Thread {
 				if(message == null) {		
 					break;
 				}
-				
+				 
 				String[] tokens = message.split(":");
 				if(!nickname.equals(tokens[0])) {
 					System.out.println(message);

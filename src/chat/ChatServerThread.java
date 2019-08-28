@@ -38,14 +38,14 @@ public class ChatServerThread extends Thread {
 			
 			// 3. 요청 처리
 			while (true) {
-				String request = bufferedReader.readLine();
+				String request = bufferedReader.readLine(); // abcd
 
 				if (request == null) {
 					//ChatServer.log("클라이언트로 부터 연결 끊김");
 					doQuit(printWriter);
 					break;
 				}
-				
+
 				//4. 프로토콜 분석
 				String[] tokens = request.split(":");
 				
@@ -66,7 +66,7 @@ public class ChatServerThread extends Thread {
 			}
 
 		} catch (SocketException e) {
-			ChatServer.log(this.nickname + "님이 나갔습니다.");
+			ChatServer.log(this.nickname + "님이 비정상적인 종료를 하였습니다.");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
