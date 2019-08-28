@@ -15,12 +15,16 @@ public class ChatClient {
 	private static String SERVER_IP = "127.0.0.1";
 	private static int SERVER_PORT = 8000;
 
+	private static String getQuit = null;
+	
 	public static void main(String[] args) {
 
 		Socket socket = null;
 		Scanner scanner = null;
+		
 
 		try {
+
 			// 1. scanner 생성(표준입력, 키보드 연결)
 			scanner = new Scanner(System.in);
 
@@ -62,8 +66,7 @@ public class ChatClient {
 						input = " ";
 					printWriter.println("message:"+input);
 					printWriter.flush();
-
-				}			
+				}	
 
 			}
 		} catch (IOException e) {
